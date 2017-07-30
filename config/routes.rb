@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+
+
+  resources :forests
+  resources :pointlesses
+  devise_for :users
+  get 'main/dashboard'
+  get 'forests/maketrue'
+  get'maketrue' => 'forests#maketrue'
+  root 'main#dashboard'
+
   resources :events
   devise_for :users
   root "post#index"

@@ -38,7 +38,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    arel (7.1.4)
+    arel (6.0.4)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -88,7 +88,8 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     orm_adapter (0.5.0)
-    rack (2.0.3)
+   rack (1.6.8)
+
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.2)
@@ -173,7 +174,8 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
-  devise
+  devise (~> 4.3)
+
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 5.0.2)

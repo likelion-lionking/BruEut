@@ -91,7 +91,6 @@ class ForestsController < ApplicationController
      @forest.save
      redirect_to :back
   end
-<<<<<<< HEAD
 
   def forestlike
     fl = Forestlike.new
@@ -122,8 +121,6 @@ class ForestsController < ApplicationController
   end
 
 
-=======
->>>>>>> 56a5a8f368b6cc782432e3fd2d4edebc23133d40
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_forest

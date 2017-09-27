@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "forestdislikes", force: :cascade do |t|
     t.integer  "forest_id"
     t.integer  "user_id"
@@ -80,8 +79,6 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at"
   end
 
-=======
->>>>>>> 56a5a8f368b6cc782432e3fd2d4edebc23133d40
   create_table "forests", force: :cascade do |t|
     t.text     "content"
     t.boolean  "censored"
@@ -139,7 +136,6 @@ ActiveRecord::Schema.define(version: 20170921041237) do
 
   add_index "mluids", ["market_id"], name: "index_mluids_on_market_id"
 
-<<<<<<< HEAD
   create_table "partycomments", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "content"
@@ -148,8 +144,6 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at"
   end
 
-=======
->>>>>>> 56a5a8f368b6cc782432e3fd2d4edebc23133d40
   create_table "partyjoins", force: :cascade do |t|
     t.integer  "partypost_id"
     t.integer  "user_id"

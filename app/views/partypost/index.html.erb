@@ -1,150 +1,137 @@
-<!-- partypost#index -->
-    <body>
+<body>
 
-      <%= render 'layouts/blackbar' %>
-      <div id="menuimage">
-        <!-- <div class = "titlebox" >
-          <h4 class = "title">파티원구함</h4>
-        </div> -->
-        <%= image_tag 'sam-frodo-bigger-text.jpg', class: 'menuimage', style: 'opacity: 0.9;'%>
-      </div>
-        <br />
+  <%= render 'layouts/blackbar' %>
+  <div id="menuimage">
+    <!-- <div class = "titlebox" >
+      <h4 class = "title">파티원구함</h4>
+    </div> -->
+    <%= image_tag 'sam-frodo-bigger-text.jpg', class: 'menuimage', style: 'opacity: 0.9;'%>
+  </div>
+    <br />
 
-        <div class="container">
-            <div class="row">
-                <div class = "ppost-form">
-                  <h5>파티원 구하기</h5>
-                  <form action ="/partycreate" method="post">
-                      내용: <input type = "text" name="article" class = "article">
-                      인원수: <select name= "total">
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10+</option>
-                      </select>
-                      <input type = "submit" class="ppost-submit button-post" value = "구해요!">
-                      </span>
-                  </form>
-                </div>
-                <br />
-                <div class="ppost-content-container">
-                <%@partyposts.reverse.each do |p|%>
-                  <% if p.partyjoins.count == p.total%>
-                    <% @statusColor = "sred" %>
-                  <% elsif p.partyjoins.count.between?(1,p.total)%>
-                    <% @statusColor = "syellow" %>
-                  <% elsif p.partyjoins.count == 0 %>
-                    <% @statusColor = "sgreen" %>
-                  <%end%>
-                    <div class="ppost-content <%=@statusColor%>">
-                        <span class="ppost-title "><%= p.article%></span><br />
-                        Posted by: <%= p.user.bname %> <br>
-
-                        <br/>
-
-                        <div class = "icon" >
-                          <% for i in 0 ... p.partyjoins.count %>
-                              <div>
-                                <%= image_tag 'personicon1.png'%>
-                              </div>
-                          <% end %>
-                            <% for i in 0 ... p.total - p.partyjoins.count %>
-                                <div>
-                                  <%= image_tag 'personicon2.png'%>
-                                </div>
-                                <!--<img src = "https://www.iconfinder.com/icons/312112/account_green_human_male_man_person_profile_user_icon">-->
-                            <% end %>
-                          <%if p.total <= 8%>
-                          <br />
-                            <div style='width:100%; height:62px; display:block;'></div>
-                          <%end%>
-                        </div>
-
-                        <br />
-                        <div class="button-container">
-
-                        <%if Partyjoin.where(:user_id=>current_user).where(:partypost_id => p.id).empty?%>
-                          <!-- <div class="button-holder"> -->
-                            <a class="button-join" href = "/partyjoin/<%= p.id %>"><i class="material-icons" style="font-size:30px;"> person_add </i>쪼인하기(<%= p.partyjoins.count %>)</a>
-                          <!-- </div> -->
-                        <%else%>
-                          <!-- <div class="button-holder"> -->
-                            <a class="button-join" href = "/partydisjoin/<%= p.id %>"><i class="material-icons" style="font-size:30px;"> cancel </i>나가기</a>
-                          <!-- </div> -->
-                        <%end%>
-
-                        <%if Partylike.where(:user_id=>current_user).where(:partypost_id => p.id).empty?%>
-                            <!-- <div class="button-holder"> -->
-                              <a class = "button-favorite material-icons" href = "/partylike/<%= p.id %>"><i class="material-icons"> favorite </i>좋아요(<%= p.partylikes.count %>)</a>
-                            <!-- </div> -->
-
-                        <%else%>
-                            <!-- <div class = "button-holder"> -->
-                              <a class = "button-favorite" href = "/partyunlike/<%= p.id %>"><i class="material-icons"> favorite_border </i>좋아요 취소(<%= p.partylikes.count %>)</a>
-                            <!-- </div> -->
-
-                        <%end%>
-
-                        </div>
-                        <br />
-                        <p>
-                          <%p.partyjoins.each do |j|%>
-                              현재파티원: <%=j.user.bname+"  "%>
-                          <%end%>
-                          <br />
-                          <%p.partylikes.each do |l|%>
-                              좋아요:<%= l.user.bname+"  "%>
-                          <%end%>
-                        </p>
-
-                        <!-- <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider"></span>
-                        </label> -->
-<<<<<<< HEAD
-                        <% p.partycomments.each do |c| %>
-                          <script src="https://use.fontawesome.com/8a1c7ad851.js"></script>
-
-                          <table class="type05">
-                            <tr>
-                              <th scope="row"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<b><%= c.user.bname %></th>
-                              <td><%= c.content %></td>
-                              <td>  <%=c.created_at.strftime('%Y/%b/%d %H:%M')%></td>
-
-                              <td>
-                                <div class="comment">
-
-                                </div>
-                              </td>
-                            </tr>
-                          </table>
-                          <br>
-
+    <div class="container">
+        <div class="row">
+            <div class = "ppost-form">
+              <h5>파티원 구하기</h5>
+              <form action ="/partycreate" method="post">
+                  내용: <input type = "text" name="article" class = "article">
+                  인원수: <select name= "total">
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10+</option>
+                  </select>
+                  <input type = "submit" class="ppost-submit button-post" value = "구해요!">
+                  </span>
+              </form>
+            </div>
+            <br />
+            <div class="ppost-content-container">
+            <%@partyposts.reverse.each do |p|%>
+              <% if p.partyjoins.count == p.total%>
+                <% @statusColor = "sred" %>
+              <% elsif p.partyjoins.count.between?(1,p.total)%>
+                <% @statusColor = "syellow" %>
+              <% elsif p.partyjoins.count == 0 %>
+                <% @statusColor = "sgreen" %>
+              <%end%>
+                <div class="ppost-content <%=@statusColor%>">
+                    <span class="ppost-title "><%= p.article%></span><br />
+                    Posted by: <%= p.user.bname %> <br>
+                    <br/>
+                    <div class = "icon" >
+                      <% for i in 0 ... p.partyjoins.count %>
+                          <div>
+                            <%= image_tag 'personicon1.png'%>
+                          </div>
                       <% end %>
+                        <% for i in 0 ... p.total - p.partyjoins.count %>
+                            <div>
+                              <%= image_tag 'personicon2.png'%>
+                            </div>
+                            <!--<img src = "https://www.iconfinder.com/icons/312112/account_green_human_male_man_person_profile_user_icon">-->
+                        <% end %>
+                      <%if p.total <= 8%>
+                      <br />
+                        <div style='width:100%; height:62px; display:block;'></div>
+                      <%end%>
+                    </div>
 
-                      <form action = "/partycomment" method="POST" class="field">
-                          <input type = "hidden" name="partypost_id" value="<%= p.id %>">
-                          댓글달기 <input type = "text" name = "content">
-                          <input type = "submit" value = "등록" class="button-submit">
-                      </form>
+                    <br />
+                    <div class="button-container">
+
+                    <%if Partyjoin.where(:user_id=>current_user).where(:partypost_id => p.id).empty?%>
+                      <!-- <div class="button-holder"> -->
+                        <a class="button-join" href = "/partyjoin/<%= p.id %>"><i class="material-icons" style="font-size:30px;"> person_add </i>쪼인하기(<%= p.partyjoins.count %>)</a>
+                      <!-- </div> -->
+                    <%else%>
+                      <!-- <div class="button-holder"> -->
+                        <a class="button-join" href = "/partydisjoin/<%= p.id %>"><i class="material-icons" style="font-size:30px;"> cancel </i>나가기</a>
+                      <!-- </div> -->
+                    <%end%>
+
+                    <%if Partylike.where(:user_id=>current_user).where(:partypost_id => p.id).empty?%>
+                        <!-- <div class="button-holder"> -->
+                          <a class = "button-favorite material-icons" href = "/partylike/<%= p.id %>"><i class="material-icons"> favorite </i>좋아요(<%= p.partylikes.count %>)</a>
+                        <!-- </div> -->
+
+                    <%else%>
+                        <!-- <div class = "button-holder"> -->
+                          <a class = "button-favorite" href = "/partyunlike/<%= p.id %>"><i class="material-icons"> favorite_border </i>좋아요 취소(<%= p.partylikes.count %>)</a>
+                        <!-- </div> -->
+
+                    <%end%>
 
                     </div>
-                <%end%>
-            </div>
-=======
+                    <br />
+                    <p>
+                      <%p.partyjoins.each do |j|%>
+                          현재파티원: <%=j.user.bname+"  "%>
+                      <%end%>
+                      <br />
+                      <%p.partylikes.each do |l|%>
+                          좋아요:<%= l.user.bname+"  "%>
+                      <%end%>
+                    </p>
 
+                    <!-- <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label> -->
+                    <% p.partycomments.each do |c| %>
+                      <script src="https://use.fontawesome.com/8a1c7ad851.js"></script>
 
+                      <table class="type05">
+                        <tr>
+                          <th scope="row"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<b><%= c.user.bname %></th>
+                          <td><%= c.content %></td>
+                          <td>  <%=c.created_at.strftime('%Y/%b/%d %H:%M')%></td>
 
-                    </div>
-                <%end%>
+                          <td>
+                            <div class="comment">
 
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                      <br>
 
-            </div>
+                  <% end %>
 
->>>>>>> 56a5a8f368b6cc782432e3fd2d4edebc23133d40
+                  <form action = "/partycomment" method="POST" class="field">
+                      <input type = "hidden" name="partypost_id" value="<%= p.id %>">
+                      댓글달기 <input type = "text" name = "content">
+                      <input type = "submit" value = "등록" class="button-submit">
+                  </form>
+
+                </div>
+            <%end%>
+
         </div>
-    </body>
+
+    </div>
+</body>

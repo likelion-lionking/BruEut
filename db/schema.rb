@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20170921041237) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at",                   null: false
   end
 
-  add_index "ckeditor_assets", ["type"], name: "index_ckeditor_assets_on_type"
+  add_index "ckeditor_assets", ["type"], name: "index_ckeditor_assets_on_type", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.string   "username"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "fcomments", ["forest_id"], name: "index_fcomments_on_forest_id"
+  add_index "fcomments", ["forest_id"], name: "index_fcomments_on_forest_id", using: :btree
 
   create_table "forest_admins", force: :cascade do |t|
     t.string   "content"
@@ -116,7 +119,7 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "mcomments", ["market_id"], name: "index_mcomments_on_market_id"
+  add_index "mcomments", ["market_id"], name: "index_mcomments_on_market_id", using: :btree
 
   create_table "mdluids", force: :cascade do |t|
     t.integer  "user_id"
@@ -125,7 +128,7 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "mdluids", ["market_id"], name: "index_mdluids_on_market_id"
+  add_index "mdluids", ["market_id"], name: "index_mdluids_on_market_id", using: :btree
 
   create_table "mluids", force: :cascade do |t|
     t.integer  "user_id"
@@ -134,7 +137,7 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "mluids", ["market_id"], name: "index_mluids_on_market_id"
+  add_index "mluids", ["market_id"], name: "index_mluids_on_market_id", using: :btree
 
   create_table "partycomments", force: :cascade do |t|
     t.integer  "user_id"
@@ -175,7 +178,7 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "pcomments", ["pointless_id"], name: "index_pcomments_on_pointless_id"
+  add_index "pcomments", ["pointless_id"], name: "index_pcomments_on_pointless_id", using: :btree
 
   create_table "pdluids", force: :cascade do |t|
     t.integer  "user_id"
@@ -184,7 +187,7 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "pdluids", ["pointless_id"], name: "index_pdluids_on_pointless_id"
+  add_index "pdluids", ["pointless_id"], name: "index_pdluids_on_pointless_id", using: :btree
 
   create_table "pluids", force: :cascade do |t|
     t.integer  "user_id"
@@ -193,7 +196,7 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "pluids", ["pointless_id"], name: "index_pluids_on_pointless_id"
+  add_index "pluids", ["pointless_id"], name: "index_pluids_on_pointless_id", using: :btree
 
   create_table "pointlesses", force: :cascade do |t|
     t.string   "title"
@@ -238,4 +241,11 @@ ActiveRecord::Schema.define(version: 20170921041237) do
     t.datetime "updated_at",                       null: false
   end
 
+  add_foreign_key "fcomments", "forests"
+  add_foreign_key "mcomments", "markets"
+  add_foreign_key "mdluids", "markets"
+  add_foreign_key "mluids", "markets"
+  add_foreign_key "pcomments", "pointlesses"
+  add_foreign_key "pdluids", "pointlesses"
+  add_foreign_key "pluids", "pointlesses"
 end

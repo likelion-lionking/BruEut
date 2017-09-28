@@ -14,7 +14,7 @@ class PcommentsController < ApplicationController
     @pcomment = @pointless.pcomments.find(params[:id])
     if current_user.id == @pcomment.user_id || current_user.tier < 4
       @pcomment.destroy
-    endss
+    end
     redirect_to pointless_path(@pointless)
   end
   private

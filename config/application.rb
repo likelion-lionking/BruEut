@@ -27,5 +27,9 @@ module Workspace
     config.assets.enabled = true
     config.time_zone = 'Pacific Time (US & Canada)'
     config.active_record.default_timezone = :local
+
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w( ckeditor/* )
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end

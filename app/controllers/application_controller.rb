@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
 
-
 @page_index1=nil
 @page_index2=nil
 @page_index3=nil

@@ -13,10 +13,10 @@ if Object.const_defined?('RailsDb')
     # config.white_list_tables = ['posts', 'comments']
 
     # # Enable http basic authentication
-    # config.http_basic_authentication_enabled = false
+    config.http_basic_authentication_enabled = true
 
     # # Enable http basic authentication
-    # config.http_basic_authentication_user_name = 'rails_db'
+    config.http_basic_authentication_user_name = 'bruteam'
 
     # # Enable http basic authentication
     config.http_basic_authentication_password = 'brueut170928'

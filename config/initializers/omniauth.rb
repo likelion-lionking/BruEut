@@ -1,7 +1,7 @@
 OmniAuth.config.logger = Rails.logger
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2, '45768978488-edhnm34dfeig5v851dj4gclf2dbi6058.apps.googleusercontent.com', 'wrEukXUNx8Ha9boa0TYqoTMM',
+  provider :google_oauth2, '318485249752-vi8snnhkrdktcbmtfi728q680377bs4b.apps.googleusercontent.com', 'reekNs4nsdF6E--1jId7yu6V,
         {
            hd: 'g.ucla.edu',
 

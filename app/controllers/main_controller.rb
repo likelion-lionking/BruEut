@@ -1,7 +1,6 @@
 class MainController < ApplicationController
   #-----rdiex,mrindex,msindex,dashboard 액션 전 유저 닉네임 설정 체크
   before_action :user_name_done, only: [:rindex, :mrindex, :msindex, :dashboard]
-  before_action :set_admin, only: [:dashboard]
   def dashboard
   end
 

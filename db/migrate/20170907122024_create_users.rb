@@ -11,7 +11,6 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :tier, default: 10
       t.boolean :create_name, default: false
       t.timestamps null: false
-      t.boolean :admin, default: false
     end
   end
 end

@@ -35,8 +35,6 @@
 
       </table>
 
-<<<<<<< HEAD
-      ======================
 
       <%if Forestlike.where(:user_id=>current_user).where(:forest_id => forest.id).empty?%>
           <!-- <div class="button-holder"> -->
@@ -61,9 +59,6 @@
           <!-- </div> -->
 
       <%end%>
-          ========================
-=======
->>>>>>> 56a5a8f368b6cc782432e3fd2d4edebc23133d40
            <%= render forest.fcomments %>
            <% if current_user %>
              <%= render "fcomments/form" %><br>

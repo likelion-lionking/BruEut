@@ -18,6 +18,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  helper_method :set_admin
+  def set_admin
+    if current_user.tier == 1
+      current_user.admin = true
+    else
+      current_user.admin = false
+    end
+  end
 
 
 @page_index1=nil

@@ -41,7 +41,7 @@
               <%end%>
                 <div class="ppost-content <%=@statusColor%>">
                     <span class="ppost-title "><%= p.article%></span><br />
-                    <!-- Posted by:  p.user.b  <br> -->
+                    Posted by: <%= p.user.bname %> <br>
                     <br/>
                     <div class = "icon" >
                       <% for i in 0 ... p.partyjoins.count %>

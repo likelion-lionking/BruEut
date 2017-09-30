@@ -14,11 +14,9 @@ class User < ActiveRecord::Base
   has_many :forests
   has_many :markets
   has_many :preports
-# <<<<<<< HEAD
-  has_many: partyposts
+
+  has_many :partyposts
   has_many :partycomments
   has_many :forestlikes
   has_many :forestdislikes
-# =======
-# >>>>>>> 56a5a8f368b6cc782432e3fd2d4edebc23133d40
 end

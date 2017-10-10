@@ -4,7 +4,7 @@ class SearchController < ApplicationController
         term = params[:term].strip
         term = term.gsub("  ", " ").gsub(" ", "%")
 
-        search_party = Partypost.where("article LIKE ?", "%#{term}%")
+        party = Partypost.where("article LIKE ?", "%#{term}%")
         partycomment = Partycomment.where("content LIKE ?" , "%#{term}%")
         party_user = Partypost.where("user LIKE ?" , "%#{term}%")
         partycomment = Partycomment.where("content LIKE ?" , "%#{term}%")
@@ -12,27 +12,24 @@ class SearchController < ApplicationController
         partylike = Partylike.where("user LIKE ?" , "%#{term}%")
         partyjoin = Partyjoin.where("user LIKE ?" , "%#{term}%")
 
-        @party = party + party_user + partycomment + partycomment_user + partylike + partycomment
-        @partys = search_party
+        @partys = party + party_user + partycomment + partycomment_user + partylike + partycomment
         @partys = @partys.uniq
         @partys = @partys.flatten
-
-
-
-
 
         search_title = Pointless.where("title LIKE ?", "%#{term}%")
         search_content = Pointless.where("content LIKE ?" , "%#{term}%")
 
 
-        @pointless = search_title + search_content
-                @pointless = @pointless.uniq
 
-                @pointless = @pointless.flatten
+        point_title = Pointless.where("content TITLE ?" , "%#{term}%")
 
-        @partyposts = search_party + partycomment
-        @partyposts = @partyposts.uniq
-        @partyposts = @partyposts.flatten
+        point_content = Pointless.where("content LIKE ?" , "%#{term}%")
+
+        @pointless = point_title + point_content
+        @pointless = @pointless.uniq
+
+        @pointless = @pointless.flatten
+
 
     end
 end

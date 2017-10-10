@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   has_many :forests
   has_many :markets
   has_many :preports
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a0e06187881d38c67af09d6e9bb3082c9e2aece
   has_many :partyposts
   has_many :partycomments
   has_many :forestlikes

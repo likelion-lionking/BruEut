@@ -5,9 +5,7 @@ class SearchController < ApplicationController
         term = term.gsub("  ", " ").gsub(" ", "%")
 
         search_party = Partypost.where("article LIKE ?", "%#{term}%")
-<<<<<<< HEAD
         partycomment = Partycomment.where("content LIKE ?" , "%#{term}%")
-=======
         party_user = Partypost.where("user LIKE ?" , "%#{term}%")
         partycomment = Partycomment.where("content LIKE ?" , "%#{term}%")
         partycomment_user = Partycomment.where("user LIKE ?" , "%#{term}%")
@@ -31,8 +29,6 @@ class SearchController < ApplicationController
                 @pointless = @pointless.uniq
 
                 @pointless = @pointless.flatten
->>>>>>> 2a0e06187881d38c67af09d6e9bb3082c9e2aece
-
 
         @partyposts = search_party + partycomment
         @partyposts = @partyposts.uniq
